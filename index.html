@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Connect with Phoenix-area home service professionals. Request a quote for repairs, maintenance, remodeling and more.">
+<title>HomeService Connect | Phoenix Home Services</title>
+<style>
+:root{--green:#123f35;--green2:#1e6b56;--lime:#c9e8a6;--ink:#172521;--muted:#63736d;--paper:#f6f8f5;--line:#e1e9e3;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5}
+a{color:inherit;text-decoration:none}.wrap{max-width:1160px;margin:auto;padding:0 22px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.5px}.mark{width:38px;height:38px;border-radius:12px;background:var(--green);color:white;display:grid;place-items:center;font-size:21px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.4px;font-weight:700}.navlinks{display:flex;align-items:center;gap:25px;font-size:14px;font-weight:650}.btn{border:0;border-radius:12px;background:var(--green);color:#fff;padding:13px 18px;font-weight:750;cursor:pointer;display:inline-flex;justify-content:center;align-items:center;gap:8px}.btn:hover{background:var(--green2)}.btn.secondary{background:#fff;color:var(--green);border:1px solid var(--line)}.btn.lime{background:var(--lime);color:var(--green)}
+.hero{background:radial-gradient(circle at 85% 15%,#2c715c 0,#174b3e 32%,#10372f 75%);color:#fff;padding:76px 0 68px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}.eyebrow{color:var(--lime);font-size:12px;letter-spacing:1.8px;font-weight:850;text-transform:uppercase}.hero h1{font-size:clamp(40px,6vw,66px);line-height:1.02;letter-spacing:-2.8px;margin:17px 0}.hero p{font-size:18px;color:#d9e8e1;max-width:590px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}.trust{display:flex;gap:18px;flex-wrap:wrap;color:#d9e8e1;font-size:13px;margin-top:25px}.hero-card{background:#fff;color:var(--ink);border-radius:22px;padding:25px;box-shadow:0 24px 70px #061f1a66}.hero-card h3{margin:0 0 7px;font-size:21px}.hero-card p{color:var(--muted);font-size:13px;margin:0 0 18px}.quickgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick{border:1px solid var(--line);border-radius:12px;padding:13px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:9px}.quick span{font-size:20px}.section{padding:70px 0}.section.white{background:#fff}.section-head{text-align:center;max-width:690px;margin:0 auto 34px}.section-head .eyebrow{color:var(--green2)}h2{font-size:clamp(29px,4vw,42px);letter-spacing:-1.4px;line-height:1.1;margin:10px 0 12px}.section-head p,.muted{color:var(--muted)}.services{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.service{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px;min-height:135px}.service .ico{font-size:27px}.service h3{margin:9px 0 3px;font-size:16px}.service p{margin:0;color:var(--muted);font-size:12px}.how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{padding:24px;background:var(--paper);border-radius:17px}.num{width:35px;height:35px;background:var(--green);color:#fff;border-radius:11px;display:grid;place-items:center;font-weight:800}.step h3{margin:15px 0 5px}.step p{margin:0;color:var(--muted);font-size:14px}.split{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:27px;box-shadow:0 8px 28px #183d2d08}.panel h3{font-size:23px;margin:0 0 5px}.panel>p{color:var(--muted);font-size:14px;margin:0 0 22px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:800;color:#344740}input,select,textarea{width:100%;border:1px solid #d9e3dc;border-radius:10px;padding:12px 12px;font:inherit;font-size:14px;background:#fff;color:var(--ink)}textarea{min-height:94px;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid #b8d9c8;border-color:var(--green2)}.hint{font-size:11px;color:var(--muted)}.formmsg{font-size:13px;margin-top:12px;min-height:20px}.notice{background:#f1f7ef;border:1px solid #dcebd7;border-radius:12px;padding:12px;color:#34523f;font-size:12px;margin:13px 0}.checkbox{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--muted)}.checkbox input{width:auto;margin-top:3px}.band{background:var(--green);color:#fff;padding:48px 0}.bandrow{display:flex;justify-content:space-between;align-items:center;gap:25px}.band h2{margin:0 0 8px}.band p{color:#d6e6de;margin:0}.faq{max-width:800px;margin:auto}.faq details{border-bottom:1px solid var(--line);padding:17px 0}.faq summary{font-weight:750;cursor:pointer}.faq p{color:var(--muted);font-size:14px}footer{background:#0c2e27;color:#d7e5df;padding:40px 0}.foot{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.foot small{color:#a9c1b5}.admin-note{font-size:11px;color:var(--muted);text-align:center;margin-top:12px}
+@media(max-width:800px){.hero-grid,.split{grid-template-columns:1fr}.hero{padding:55px 0}.services{grid-template-columns:repeat(2,1fr)}.navlinks{gap:12px}.navlinks a:not(.btn){display:none}.how{grid-template-columns:1fr}.bandrow{align-items:flex-start;flex-direction:column}}
+@media(max-width:480px){.wrap{padding:0 16px}.services{gap:9px}.service{padding:14px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero-card{padding:18px}.quickgrid{gap:7px}.quick{padding:10px;font-size:12px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#"><span class="mark">⌂</span><span>HomeService Connect<small>PHOENIX, ARIZONA</small></span></a>
+<nav class="navlinks"><a href="#services">Services</a><a href="#how">How it works</a><a href="#contractors">For contractors</a><a class="btn" href="#quote">Get a free quote</a></nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div><div class="eyebrow">A simpler way to find home help</div><h1>Your project.<br><span style="color:var(--lime)">The right pro.</span></h1>
+<p>Tell us what you need done. HomeService Connect helps you reach independent home-service professionals serving the Phoenix area.</p>
+<div class="hero-actions"><a class="btn lime" href="#quote">Request a quote <span>→</span></a><a class="btn secondary" href="#services">Explore services</a></div>
+<div class="trust"><span>✓ No-cost request</span><span>✓ Local service matching</span><span>✓ No obligation to hire</span></div></div>
+<div class="hero-card"><h3>What can we help with?</h3><p>Choose a service to start your request.</p><div class="quickgrid">
+<a class="quick" href="#quote" data-service="Handyman"><span>🛠️</span> Handyman</a><a class="quick" href="#quote" data-service="Plumbing"><span>🚰</span> Plumbing</a>
+<a class="quick" href="#quote" data-service="Electrical"><span>💡</span> Electrical</a><a class="quick" href="#quote" data-service="Roofing"><span>🏠</span> Roofing</a>
+<a class="quick" href="#quote" data-service="HVAC"><span>❄️</span> Heating & cooling</a><a class="quick" href="#quote" data-service="Landscaping"><span>🌵</span> Landscaping</a>
+<a class="quick" href="#quote" data-service="Cleaning"><span>🧹</span> Cleaning</a><a class="quick" href="#quote" data-service="Other"><span>＋</span> Other projects</a>
+</div></div>
+</div></section>
+<section class="section white" id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">Services</div><h2>Help for the projects on your list</h2><p>From small fixes to larger home projects, tell us what you're looking for and we'll route your request to matching providers.</p></div>
+<div class="services">
+<div class="service"><div class="ico">🛠️</div><h3>Handyman & repairs</h3><p>Small repairs, drywall, doors and installs.</p></div>
+<div class="service"><div class="ico">🚰</div><h3>Plumbing</h3><p>Leaks, fixtures and plumbing projects.</p></div>
+<div class="service"><div class="ico">💡</div><h3>Electrical</h3><p>Lighting, outlets and electrical work.</p></div>
+<div class="service"><div class="ico">❄️</div><h3>HVAC</h3><p>Heating, cooling and maintenance.</p></div>
+<div class="service"><div class="ico">🏠</div><h3>Roofing</h3><p>Roof repairs, inspections and replacement.</p></div>
+<div class="service"><div class="ico">🌵</div><h3>Landscaping</h3><p>Yard cleanup, irrigation and outdoor work.</p></div>
+<div class="service"><div class="ico">🧹</div><h3>Cleaning</h3><p>Home, deep and move-out cleaning.</p></div>
+<div class="service"><div class="ico">🪚</div><h3>Remodeling & more</h3><p>Flooring, painting, renovations and more.</p></div>
+</div></div></section>
+<section class="section" id="how"><div class="wrap"><div class="section-head"><div class="eyebrow">Simple process</div><h2>Three steps to get moving</h2><p>Submitting a request is free and doesn't obligate you to hire anyone.</p></div>
+<div class="how"><div class="step"><div class="num">1</div><h3>Describe your project</h3><p>Choose a service, share your ZIP code and tell us what needs doing.</p></div><div class="step"><div class="num">2</div><h3>Get connected</h3><p>Your request can be shared with matching independent providers after you give permission.</p></div><div class="step"><div class="num">3</div><h3>Compare and choose</h3><p>Discuss scope, availability, licensing and pricing directly before you decide.</p></div></div></div></section>
+<section class="section white" id="quote"><div class="wrap split">
+<div><div class="eyebrow" style="color:var(--green2)">For homeowners</div><h2>Tell us about your project</h2><p class="muted">Complete the form and we'll use your service category and Phoenix-area ZIP code to identify matching providers. Please don't include payment details or sensitive personal information.</p>
+<div class="notice"><strong>How this works:</strong> HomeService Connect is a matching service, not the contractor performing the work. Providers are independent businesses. Check licensing, insurance, references and written estimates before hiring.</div></div>
+<div class="panel"><h3>Request a free quote</h3><p>Usually takes about 2 minutes.</p>
+<form id="quoteForm"><div class="formgrid">
+<div class="field"><label for="qname">Full name *</label><input id="qname" name="name" autocomplete="name" required maxlength="100"></div>
+<div class="field"><label for="qemail">Email *</label><input id="qemail" name="email" type="email" autocomplete="email" required maxlength="150"></div>
+<div class="field"><label for="qphone">Phone *</label><input id="qphone" name="phone" type="tel" autocomplete="tel" required maxlength="30"></div>
+<div class="field"><label for="qzip">ZIP code *</label><input id="qzip" name="zip" inputmode="numeric" pattern="[0-9]{5}" placeholder="85001" required></div>
+<div class="field"><label for="qservice">Service needed *</label><select id="qservice" name="service" required><option value="">Choose a service</option><option>Handyman</option><option>Plumbing</option><option>Electrical</option><option>HVAC</option><option>Roofing</option><option>Landscaping</option><option>Cleaning</option><option>Painting</option><option>Flooring</option><option>Remodeling</option><option>Pest control</option><option>Moving</option><option>Appliance repair</option><option>Other</option></select></div>
+<div class="field"><label for="qwhen">When do you need it?</label><select id="qwhen" name="timeframe"><option>Flexible</option><option>As soon as possible</option><option>Within 1–2 weeks</option><option>Within a month</option><option>Planning / researching</option></select></div>
+<div class="field full"><label for="qdetails">Describe the project *</label><textarea id="qdetails" name="details" required maxlength="2000" placeholder="What needs to be done? Include useful details, but no sensitive information."></textarea></div>
+<div class="field full"><label class="checkbox"><input type="checkbox" name="consent" required><span>I agree that HomeService Connect may use my information to respond to this request and, if I separately authorize it below, share relevant details with matching independent service providers. *</span></label></div>
+<div class="field full"><label class="checkbox"><input type="checkbox" name="share" value="yes" required><span>I authorize HomeService Connect to share my project details and contact information with up to 3 matching providers so they can contact me about this request. *</span></label></div>
+<div class="field full"><button class="btn" type="submit">Submit quote request →</button><div class="hint">No payment is collected through this form. Submission is not a guarantee of a quote or provider availability.</div><div class="formmsg" id="quoteMsg" role="status"></div></div>
+</div></form></div>
+</div></section>
+<section class="section" id="contractors"><div class="wrap split">
+<div><div class="eyebrow" style="color:var(--green2)">For service professionals</div><h2>Grow your business with local leads</h2><p class="muted">Join the HomeService Connect provider network. Tell us what work you take on and where you serve. Initial applications are free and subject to review.</p>
+<div class="step"><h3>What happens after signup?</h3><p>We review your information, confirm your service categories and coverage area, then contact you about onboarding. Do not pay anyone claiming to represent us until you have verified the request through our official contact channel.</p></div></div>
+<div class="panel"><h3>Contractor application</h3><p>Register your business interest.</p>
+<form id="contractorForm"><div class="formgrid">
+<div class="field"><label for="cname">Contact name *</label><input id="cname" name="contactName" required maxlength="100"></div>
+<div class="field"><label for="cbiz">Business name *</label><input id="cbiz" name="businessName" required maxlength="150"></div>
+<div class="field"><label for="cemail">Business email *</label><input id="cemail" name="email" type="email" required maxlength="150"></div>
+<div class="field"><label for="cphone">Phone *</label><input id="cphone" name="phone" type="tel" required maxlength="30"></div>
+<div class="field"><label for="czip">Primary ZIP code *</label><input id="czip" name="zip" inputmode="numeric" pattern="[0-9]{5}" placeholder="85001" required></div>
+<div class="field"><label for="cradius">Service radius *</label><select id="cradius" name="radius" required><option>5 miles</option><option>10 miles</option><option>15 miles</option><option>25 miles</option><option>50 miles</option><option>Multiple areas / statewide</option></select></div>
+<div class="field full"><label for="ccats">Services offered *</label><select id="ccats" name="services" multiple required size="6"><option>Handyman</option><option>Plumbing</option><option>Electrical</option><option>HVAC</option><option>Roofing</option><option>Landscaping</option><option>Cleaning</option><option>Painting</option><option>Flooring</option><option>Remodeling</option><option>Pest control</option><option>Moving</option><option>Appliance repair</option><option>Other</option></select><span class="hint">On a computer, use Ctrl (Windows) or Command (Mac) to select multiple.</span></div>
+<div class="field full"><label for="clicense">License / registration details (if applicable)</label><input id="clicense" name="license" maxlength="120" placeholder="Type, number or N/A"></div>
+<div class="field full"><label for="cwebsite">Website (optional)</label><input id="cwebsite" name="website" type="url" placeholder="https://"></div>
+<div class="field full"><label for="cnotes">Tell us about your business</label><textarea id="cnotes" name="notes" maxlength="1500" placeholder="Years in business, specialties, availability, etc."></textarea></div>
+<div class="field full"><label class="checkbox"><input type="checkbox" name="cconsent" required><span>I confirm that I am authorized to submit this application and consent to being contacted about provider onboarding. *</span></label></div>
+<div class="field full"><button class="btn" type="submit">Apply to join →</button><div class="formmsg" id="contractorMsg" role="status"></div></div>
+</div></form></div></div></section>
+<section class="band"><div class="wrap bandrow"><div><h2>Ready to get your project moving?</h2><p>Start with a free request. Compare options and choose what's right for your home.</p></div><a class="btn lime" href="#quote">Request a quote →</a></div></section>
+<section class="section white"><div class="wrap faq"><div class="section-head"><div class="eyebrow">Questions</div><h2>Good to know</h2></div>
+<details><summary>Does it cost anything to request a quote?</summary><p>No. Homeowners can submit a request for free. You decide whether to engage any provider and agree on pricing directly with them.</p></details>
+<details><summary>Are contractors employees of HomeService Connect?</summary><p>No. Providers are independent businesses. HomeService Connect is a connection and lead-routing platform, not the provider of the home service.</p></details>
+<details><summary>Are providers verified?</summary><p>Only providers whose review status is explicitly confirmed by HomeService Connect should be described as verified. Always independently check applicable Arizona licensing, insurance and references before hiring.</p></details>
+<details><summary>Do you guarantee a quote or a contractor?</summary><p>No. Availability depends on participating providers, project details and location. A request does not guarantee a response, quote, price or completed service.</p></details>
+</div></section>
+</main>
+<footer><div class="wrap foot"><div><div class="brand" style="color:white"><span class="mark" style="background:#c9e8a6;color:#123f35">⌂</span><span>HomeService Connect<small style="color:#a9c1b5">PHOENIX, ARIZONA</small></span></div><p style="max-width:440px;font-size:13px">A local connection platform helping homeowners discover independent home-service providers.</p></div><div><strong>Contact</strong><p style="font-size:13px">Add your business email before launch.</p><small>© <span id="year"></span> HomeService Connect. All rights reserved.</small></div></div></footer>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzX9x6whvmRxKSnSMi0oeWd9VQKyFd8TcYgRyrl8hFjuIZm5-_Gfhuo0kf-9Mk2EJin-w/exec";
+document.getElementById("year").textContent=new Date().getFullYear();
+document.querySelectorAll("[data-service]").forEach(a=>a.addEventListener("click",()=>{document.getElementById("qservice").value=a.dataset.service}));
+function formObject(form){const o={};new FormData(form).forEach((v,k)=>{if(k==="services"){o[k]=[...(form.querySelector('[name="services"]').selectedOptions)].map(x=>x.value)}else if(o[k]){o[k]+=", "+v}else{o[k]=v}});return o}
+async function submitForm(form,type,msgId){
+ const msg=document.getElementById(msgId),btn=form.querySelector('button[type="submit"]');
+ if(!form.reportValidity())return;
+ const data=formObject(form);data.type=type;data.source="HomeService Connect website";data.submittedAt=new Date().toISOString();
+ if(SCRIPT_URL.includes("PASTE_YOUR")){
+   msg.textContent="Your form is ready, but live submission is not connected yet. Follow the setup guide to connect your free Google Apps Script endpoint.";
+   msg.style.color="#9a5b12";return;
+ }
+ btn.disabled=true;btn.textContent="Sending…";msg.textContent="";
+ try{
+  const response=await fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"text/plain;charset=utf-8"}});
+  const result=await response.json();
+  if(!result.ok)throw new Error(result.error||"Submission failed");
+  msg.textContent=type==="quote"?"Thanks! Your request has been received. We'll contact you about matching providers.":"Thanks! Your application has been received. We'll review it and contact you about next steps.";
+  msg.style.color="#176b45";form.reset();
+ }catch(e){msg.textContent="We couldn't submit your form. Please try again later or contact the site owner.";msg.style.color="#a33"}
+ finally{btn.disabled=false;btn.textContent=type==="quote"?"Submit quote request →":"Apply to join →"}
+}
+document.getElementById("quoteForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"quote","quoteMsg")});
+document.getElementById("contractorForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"contractor","contractorMsg")});
+</script>
+</body></html>
