@@ -107,7 +107,7 @@ async function submitForm(form,type,msgId){
   const response=await fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"text/plain;charset=utf-8"}});
   const result=await response.json();
   if(!result.ok)throw new Error(result.error||"Submission failed");
-  msg.textContent=type==="quote"?"Thanks! Your request has been received. We'll contact you about matching providers.":"Thanks! Your application has been received. We'll review it and contact you about next steps.";
+  if(type==="contractor"){window.location.href="https://homeservicesite.github.io/homeservice-connect/plans.html";return;}msg.textContent="Thanks! Your request has been received. We'll contact you about matching providers.";
   msg.style.color="#176b45";form.reset();
  }catch(e){msg.textContent="We couldn't submit your form. Please try again later or contact the site owner.";msg.style.color="#a33"}
  finally{btn.disabled=false;btn.textContent=type==="quote"?"Submit quote request →":"Apply to join →"}
