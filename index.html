@@ -115,7 +115,8 @@ msg.textContent = matches.length
   msg.style.color="#176b45";form.reset();
 }catch(e){msg.textContent="Submission error: "+(e.message||String(e));msg.style.color="#a33";console.error(e)}
  finally{btn.disabled=false;btn.textContent=type==="quote"?"Submit quote request →":"Apply to join →"}
-document.getElementById("quoteForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"quote","quoteMsg")});}
+}
+document.getElementById("quoteForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"quote","quoteMsg")});
 document.getElementById("contractorForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"contractor","contractorMsg")});
 </script>
 </body></html>
