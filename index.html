@@ -113,9 +113,9 @@ msg.textContent = matches.length
   ? "Your request was received! Matching approved contractors: " + matches.map(c => c.name).join(", ")
   : "Your request was received! No approved contractors currently match your service and ZIP code.";
   msg.style.color="#176b45";form.reset();
- }catch(e){msg.textContent="We couldn't submit your form. Please try again later or contact the site owner.";msg.style.color="#a33"}
+ }}catch(e){msg.textContent="Submission error: "+(e.message||String(e));msg.style.color="#a33";console.error(e)}
  finally{btn.disabled=false;btn.textContent=type==="quote"?"Submit quote request →":"Apply to join →"}
-}
+}catch(e){msg.textContent="Submission error: "+(e.message||String(e));msg.style.color="#a33";console.error(e)}
 document.getElementById("quoteForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"quote","quoteMsg")});
 document.getElementById("contractorForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"contractor","contractorMsg")});
 </script>
