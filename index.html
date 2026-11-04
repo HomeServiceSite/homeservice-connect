@@ -108,11 +108,9 @@ async function submitForm(form,type,msgId){
   const result=await response.json();
   if(!result.ok)throw new Error(result.error||"Submission failed");
   if(type==="contractor"){window.location.href="https://homeservicesite.github.io/homeservice-connect/plans.html";return;}
-const matches = result.matches || [];
-msg.textContent = matches.length
-  ? "Your request was received! Matching approved contractors: " + matches.map(c => c.name).join(", ")
-  : "Your request was received! No approved contractors currently match your service and ZIP code.";
-  msg.style.color="#176b45";form.reset();
+msg.textContent="Thanks! Your request has been received. We'll contact you about matching providers.";
+msg.style.color="#176b45";
+form.reset();
 }catch(e){msg.textContent="Submission error: "+(e.message||String(e));msg.style.color="#a33";console.error(e)}
  finally{btn.disabled=false;btn.textContent=type==="quote"?"Submit quote request →":"Apply to join →"}
 }
