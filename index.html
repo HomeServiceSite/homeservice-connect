@@ -17,8 +17,7 @@ header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0
 <body>
 <header><div class="wrap nav">
 <a class="brand" href="#"><span class="mark">⌂</span><span>HomeService Connect<small>Show Low, ARIZONA</small></span></a>
-<nav class="navlinks"><a href="#services">Services</a><a href="#how">How it works</a><a href="#contractors">For contractors</a><a class="btn" href="#quote">Get a free quote</a></nav>
-</div></header>
+<nav class="navlinks"><a href="#services">Services</a><a href="#directory">Find a contractor</a><a href="#how">How it works</a><a href="#contractors">For contractors</a><a class="btn" href="#quote">Get a free quote</a></nav>
 <main>
 <section class="hero"><div class="wrap hero-grid">
 <div><div class="eyebrow">A simpler way to find home help</div><h1>Your project.<br><span style="color:var(--lime)">The right pro.</span></h1>
@@ -43,7 +42,95 @@ header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0
 <div class="service"><div class="ico">🧹</div><h3>Cleaning</h3><p>Home, deep and move-out cleaning.</p></div>
 <div class="service"><div class="ico">🪚</div><h3>Remodeling & more</h3><p>Flooring, painting, renovations and more.</p></div>
 </div></div></section>
-<section class="section" id="how"><div class="wrap"><div class="section-head"><div class="eyebrow">Simple process</div><h2>Three steps to get moving</h2><p>Submitting a request is free and doesn't obligate you to hire anyone.</p></div>
+
+<section class="section white" id="directory">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Local professionals</div>
+      <h2>Find a contractor</h2>
+      <p>Browse local contractors serving the White Mountains.</p>
+    </div>
+
+    <input
+      type="text"
+      id="contractorSearch"
+      placeholder="Search by business, service, or ZIP code..."
+      style="width:100%;padding:14px;margin-bottom:20px;border:1px solid #ddd;border-radius:10px;"
+    >
+
+    <div id="contractorResults">Loading contractors...</div>
+  </div>
+</section>
+
+<script>
+const DIRECTORY_URL = "https://script.google.com/macros/s/AKfycbzX9x6whvmRxKSnSMi0oeWd9VQKyFd8TcYgRyrl8hFjuIZm5-_Gfhuo0kf-9Mk2EJin-w/exec";
+
+let contractors = [];
+
+async function loadContractors() {
+  const results = document.getElementById("contractorResults");
+
+  try {
+    const response = await fetch(DIRECTORY_URL);
+    const data = await response.json();
+
+    contractors = data.contractors || [];
+    displayContractors(contractors);
+  } catch (error) {
+    results.textContent = "Unable to load contractors. Please try again later.";
+  }
+}
+
+function displayContractors(list) {
+  const results = document.getElementById("contractorResults");
+
+  if (!list.length) {
+    results.textContent = "No matching contractors found.";
+    return;
+  }
+
+  results.innerHTML = list.map(c => `
+    <div style="padding:18px;margin-bottom:14px;border:1px solid #ddd;border-radius:12px;">
+      <h3>${escapeHTML(c.name || "Local Contractor")}</h3>
+      <p><strong>Services:</strong> ${escapeHTML((c.services || []).join(", "))}</p>
+      <p><strong>ZIP:</strong> ${escapeHTML(c.zip || "Not provided")}</p>
+      <p><strong>Service area:</strong> ${escapeHTML(c.radius || "Not provided")}</p>
+      <p>${escapeHTML(c.description || "")}</p>
+      ${c.phone ? `<p><a href="tel:${encodeURIComponent(c.phone)}">Call contractor</a></p>` : ""}
+      ${c.website ? `<p><a href="${safeWebsite(c.website)}" target="_blank" rel="noopener">Visit website</a></p>` : ""}
+    </div>
+  `).join("");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  })[ch]);
+}
+
+function safeWebsite(value) {
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : "#";
+  } catch {
+    return "#";
+  }
+}
+
+document.getElementById("contractorSearch").addEventListener("input", function() {
+  const search = this.value.toLowerCase();
+
+  displayContractors(contractors.filter(c =>
+    [c.name, c.zip, c.radius, c.description,
+     ...(c.services || [])].join(" ").toLowerCase().includes(search)
+  ));
+});
+
+loadContractors();
+</script>
+
+ <section class="section" id="how"><div class="wrap"><div class="section-head"><div class="eyebrow">Simple process</div><h2>Three steps to get moving</h2><p>Submitting a request is free and doesn't obligate you to hire anyone.</p></div>
 <div class="how"><div class="step"><div class="num">1</div><h3>Describe your project</h3><p>Choose a service, share your ZIP code and tell us what needs doing.</p></div><div class="step"><div class="num">2</div><h3>Get connected</h3><p>Your request can be shared with matching independent providers after you give permission.</p></div><div class="step"><div class="num">3</div><h3>Compare and choose</h3><p>Discuss scope, availability, licensing and pricing directly before you decide.</p></div></div></div></section>
 <section class="section white" id="quote"><div class="wrap split">
 <div><div class="eyebrow" style="color:var(--green2)">For homeowners</div><h2>Tell us about your project</h2><p class="muted">Complete the form and we'll use your service category and White Mountains-area ZIP code to identify matching providers. Including Show Low, Pinetop-Lakeside, Snowflake, Taylor, and Pinedale. Please don't include payment details or sensitive personal information.</p>
