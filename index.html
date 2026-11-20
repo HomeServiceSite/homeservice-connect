@@ -161,7 +161,7 @@ function displayContractors(list) {
 <p>
   <strong>Services:</strong><br>
   ${(c.services || []).map(service =>
-    `<span class="service-badge">${escapeHTML(service)}</span>`
+    `<span style="display:inline-block;background:#e5f3ed;color:#176b52;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;margin:4px 5px 4px 0;">${escapeHTML(service)}</span>`
   ).join("")}
 </p>
     <p><strong>ZIP Code:</strong> ${escapeHTML(c.zip || "Not provided")}</p>
