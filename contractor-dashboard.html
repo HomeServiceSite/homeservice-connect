@@ -201,9 +201,10 @@ onAuthStateChanged(auth, async function(user) {
   const statusBox = document.getElementById("approvalStatus");
 
   if (!user) {
-    window.location.href = "contractor-login.html";
-    return;
-  }
+  statusBox.textContent =
+    "TEST: Firebase is not detecting a signed-in account.";
+  return;
+}
 
   document.getElementById("accountEmail").textContent =
     user.email || "Signed-in account";
