@@ -272,8 +272,36 @@ function readFileAsDataURL(file) {
 async function submitForm(form,type,msgId){
  const msg=document.getElementById(msgId),btn=form.querySelector('button[type="submit"]');
  if(!form.reportValidity())return;
- const data=formObject(form);data.type=type;data.source="HomeService Connect website";data.submittedAt=new Date().toISOString();
- if(SCRIPT_URL.includes("PASTE_YOUR")){
+const data=formObject(form);
+
+if (type === "contractor") {
+  const logoInput = form.querySelector('[name="logoFile"]');
+  const file = logoInput && logoInput.files ? logoInput.files[0] : null;
+
+  if (file) {
+    if (file.size > 2 * 1024 * 1024) {
+      msg.textContent = "Please choose an image smaller than 2 MB.";
+      msg.style.color = "#a33";
+      return;
+    }
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      msg.textContent = "Please upload a JPG, PNG, or WebP image.";
+      msg.style.color = "#a33";
+      return;
+    }
+
+    const dataURL = await readFileAsDataURL(file);
+    data.logoData = dataURL.split(",")[1];
+    data.logoFileName = file.name;
+    data.logoMimeType = file.type;
+  }
+}
+
+data.type=type;
+data.source="HomeService Connect website";
+data.submittedAt=new Date().toISOString(); if(SCRIPT_URL.includes("PASTE_YOUR")){
    msg.textContent="Your form is ready, but live submission is not connected yet. Follow the setup guide to connect your free Google Apps Script endpoint.";
    msg.style.color="#9a5b12";return;
  }
