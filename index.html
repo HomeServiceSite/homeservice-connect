@@ -155,26 +155,38 @@ function displayContractors(list) {
   }
 
   results.innerHTML = list.map(c => `
-  <div class="contractor-card">
-    <h3>${escapeHTML(c.name || "Local Contractor")}</h3>
+    <div class="contractor-card">
 
-<p>
-  <strong>Services:</strong><br>
-  ${(c.services || []).map(service =>
-    `<span style="display:inline-block;background:#e5f3ed;color:#176b52;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;margin:4px 5px 4px 0;">${escapeHTML(service)}</span>`
-  ).join("")}
-</p>
-    <p><strong>ZIP Code:</strong> ${escapeHTML(c.zip || "Not provided")}</p>
+      ${c.logo ? `
+        <img
+          src="${escapeHTML(c.logo)}"
+          alt="${escapeHTML(c.name || "Contractor")} logo"
+          loading="lazy"
+          style="width:100%;max-width:140px;height:110px;object-fit:contain;border-radius:10px;margin-bottom:12px;"
+        >
+      ` : ""}
 
-    <p><strong>Service Area:</strong> ${escapeHTML(c.radius || "Not provided")}</p>
+      <h3>${escapeHTML(c.name || "Local Contractor")}</h3>
 
-    <p>${escapeHTML(c.description || "")}</p>
+      <p>
+        <strong>Services:</strong><br>
+        ${(c.services || []).map(service =>
+          `<span style="display:inline-block;background:#e5f3ed;color:#176b52;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;margin:4px 5px 4px 0;">${escapeHTML(service)}</span>`
+        ).join("")}
+      </p>
 
-    ${c.phone ? `<p><a href="tel:${encodeURIComponent(c.phone)}">📞 Call Contractor</a></p>` : ""}
+      <p><strong>ZIP Code:</strong> ${escapeHTML(c.zip || "Not provided")}</p>
 
-    ${c.website ? `<p><a href="${safeWebsite(c.website)}" target="_blank" rel="noopener">🌐 Visit Website</a></p>` : ""}
-  </div>
-`).join("");
+      <p><strong>Service Area:</strong> ${escapeHTML(c.radius || "Not provided")}</p>
+
+      <p>${escapeHTML(c.description || "")}</p>
+
+      ${c.phone ? `<p><a href="tel:${encodeURIComponent(c.phone)}">📞 Call Contractor</a></p>` : ""}
+
+      ${c.website ? `<p><a href="${safeWebsite(c.website)}" target="_blank" rel="noopener">🌐 Visit Website</a></p>` : ""}
+
+    </div>
+  `).join("");
 }
 
 function escapeHTML(value) {
