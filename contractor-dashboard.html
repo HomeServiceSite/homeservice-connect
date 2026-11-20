@@ -196,7 +196,7 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-
+console.log("Firebase dashboard initialized");
     
 onAuthStateChanged(auth, async function(user) {
   const statusBox = document.getElementById("approvalStatus");
