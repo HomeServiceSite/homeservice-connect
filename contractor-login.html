@@ -150,8 +150,8 @@
       message.style.color = "#176b52";
 
       try {
-        await signInWithEmailAndPassword(auth, email, password);
-
+await setPersistence(auth, browserLocalPersistence);
+await signInWithEmailAndPassword(auth, email, password);
         message.textContent =
           "Sign-in successful. Contractor approval verification is the next setup step. Your dashboard is not available yet.";
 
