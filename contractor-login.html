@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contractor Login | HomeService Connect</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f3;
+      color: #173b32;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .login-box {
+      background: white;
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    p {
+      text-align: center;
+      color: #64748b;
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: #176b52;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #12543f;
+    }
+
+    #message {
+      margin-top: 18px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 22px;
+      color: #176b52;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+    <h1>Contractor Login</h1>
+    <p>HomeService Connect</p>
+
+    <form id="loginForm">
+      <label for="email">Email Address</label>
+      <input id="email" type="email" required autocomplete="username">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" required autocomplete="current-password">
+
+      <button type="submit">Sign In</button>
+    </form>
+
+    <button type="button" id="resetButton">
+      Reset Password
+    </button>
+
+    <p id="message" role="status"></p>
+
+    <a class="back-link" href="index.html">
+      Back to HomeService Connect
+    </a>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAn651x7PTCejhc4d2m3yspRp-rT3uqHr8",
+      authDomain: "homeservice-connect-dashboard.firebaseapp.com",
+      projectId: "homeservice-connect-dashboard",
+      storageBucket: "homeservice-connect-dashboard.firebasestorage.app",
+      messagingSenderId: "522603441459",
+      appId: "1:522603441459:web:067706575879291172e246"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const form = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      message.textContent = "Signing in...";
+      message.style.color = "#176b52";
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+
+        message.textContent =
+          "Sign-in successful. Contractor approval verification is the next setup step. Your dashboard is not available yet.";
+
+      } catch(error) {
+        message.textContent =
+          error.code === "auth/invalid-credential"
+            ? "Incorrect email or password."
+            : "Sign-in error: " + error.message;
+
+        message.style.color = "#b42318";
+      }
+    });
+
+    document.getElementById("resetButton")
+      .addEventListener("click", async function() {
+
+        const email = document.getElementById("email").value.trim();
+
+        if (!email) {
+          message.textContent =
+            "Enter your email address first, then click Reset Password.";
+          message.style.color = "#b42318";
+          return;
+        }
+
+        try {
+          await sendPasswordResetEmail(auth, email);
+          message.textContent =
+            "If an account exists for that email, a password reset email has been sent.";
+          message.style.color = "#176b52";
+
+        } catch(error) {
+          message.textContent = "Reset error: " + error.message;
+          message.style.color = "#b42318";
+        }
+      });
+  </script>
+
+</body>
+</html>
