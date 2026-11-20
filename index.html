@@ -158,8 +158,12 @@ function displayContractors(list) {
   <div class="contractor-card">
     <h3>${escapeHTML(c.name || "Local Contractor")}</h3>
 
-    <p><strong>Services:</strong> ${escapeHTML((c.services || []).join(", "))}</p>
-
+<p>
+  <strong>Services:</strong><br>
+  ${(c.services || []).map(service =>
+    `<span class="service-badge">${escapeHTML(service)}</span>`
+  ).join("")}
+</p>
     <p><strong>ZIP Code:</strong> ${escapeHTML(c.zip || "Not provided")}</p>
 
     <p><strong>Service Area:</strong> ${escapeHTML(c.radius || "Not provided")}</p>
