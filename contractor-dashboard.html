@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contractor Dashboard | HomeService Connect</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f3;
+      color: #173b32;
+    }
+
+    header {
+      background: #173b32;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    header h1 {
+      font-size: 21px;
+      margin: 0;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    #signOutButton {
+      background: white;
+      color: #173b32;
+    }
+
+    main {
+      max-width: 1050px;
+      margin: 30px auto;
+      padding: 0 18px;
+    }
+
+    .welcome {
+      margin-bottom: 24px;
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      color: #64748b;
+    }
+
+    .status {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 5px solid #d69e36;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .dashboard-card {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .dashboard-card h3 {
+      margin-top: 0;
+      color: #176b52;
+    }
+
+    .dashboard-card p {
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .locked {
+      opacity: 0.65;
+    }
+
+    #accountEmail {
+      overflow-wrap: anywhere;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+    }
+
+    footer a {
+      color: #176b52;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>HomeService Connect</h1>
+    <button id="signOutButton" type="button">Sign Out</button>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Contractor Dashboard</h2>
+      <p>Manage your business and connect with local customers.</p>
+      <p>Signed in as: <span id="accountEmail">Checking account...</span></p>
+    </section>
+
+    <section class="status" id="approvalStatus" role="status">
+      Checking your sign-in status...
+    </section>
+
+    <section class="dashboard-grid">
+
+      <div class="dashboard-card locked">
+        <h3>Business Profile</h3>
+        <p>Manage your business name, phone number, website, and description.</p>
+        <strong>Coming soon</strong>
+      </div>
+
+      <div class="dashboard-card locked">
+        <h3>Logo & Photos</h3>
+        <p>Upload and manage your business logo and photos.</p>
+        <strong>Coming soon</strong>
+      </div>
+
+      <div class="dashboard-card locked">
+        <h3>Services & Service Area</h3>
+        <p>Update the services you offer and the areas you serve.</p>
+        <strong>Coming soon</strong>
+      </div>
+
+      <div class="dashboard-card locked">
+        <h3>Customer Leads</h3>
+        <p>View customer requests and opportunities for new work.</p>
+        <strong>Coming soon</strong>
+      </div>
+
+      <div class="dashboard-card locked">
+        <h3>Account Settings</h3>
+        <p>Manage your account and password.</p>
+        <strong>Coming soon</strong>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <a href="index.html">Back to HomeService Connect</a>
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAn651x7PTCejhc4d2m3yspRp-rT3uqHr8",
+      authDomain: "homeservice-connect-dashboard.firebaseapp.com",
+      projectId: "homeservice-connect-dashboard",
+      storageBucket: "homeservice-connect-dashboard.firebasestorage.app",
+      messagingSenderId: "522603441459",
+      appId: "1:522603441459:web:067706575879291172e246"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, function(user) {
+      if (!user) {
+        window.location.href = "contractor-login.html";
+        return;
+      }
+
+      document.getElementById("accountEmail").textContent =
+        user.email || "Signed-in account";
+
+      document.getElementById("approvalStatus").textContent =
+        "You are signed in. Your contractor approval has not yet been verified. Dashboard information will remain unavailable until verification is connected.";
+    });
+
+    document.getElementById("signOutButton")
+      .addEventListener("click", async function() {
+        await signOut(auth);
+        window.location.href = "contractor-login.html";
+      });
+  </script>
+
+</body>
+</html>
