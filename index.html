@@ -260,7 +260,15 @@ loadContractors();
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzX9x6whvmRxKSnSMi0oeWd9VQKyFd8TcYgRyrl8hFjuIZm5-_Gfhuo0kf-9Mk2EJin-w/exec";
 document.getElementById("year").textContent=new Date().getFullYear();
 document.querySelectorAll("[data-service]").forEach(a=>a.addEventListener("click",()=>{document.getElementById("qservice").value=a.dataset.service}));
-function formObject(form){const o={};new FormData(form).forEach((v,k)=>{if(k==="services"){o[k]=[...(form.querySelector('[name="services"]').selectedOptions)].map(x=>x.value)}else if(o[k]){o[k]+=", "+v}else{o[k]=v}});return o}
+function readFileAsDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(new Error("Could not read the selected image."));
+    reader.readAsDataURL(file);
+  });
+}
+  function formObject(form){const o={};new FormData(form).forEach((v,k)=>{if(k==="services"){o[k]=[...(form.querySelector('[name="services"]').selectedOptions)].map(x=>x.value)}else if(o[k]){o[k]+=", "+v}else{o[k]=v}});return o}
 async function submitForm(form,type,msgId){
  const msg=document.getElementById(msgId),btn=form.querySelector('button[type="submit"]');
  if(!form.reportValidity())return;
