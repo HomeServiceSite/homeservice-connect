@@ -146,6 +146,7 @@ async function loadContractors() {
   }
 }
 
+
 function displayContractors(list) {
   const results = document.getElementById("contractorResults");
 
@@ -155,35 +156,114 @@ function displayContractors(list) {
   }
 
   results.innerHTML = list.map(c => `
-    <div class="contractor-card">
+    <div class="contractor-card" style="
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:16px;
+      padding:20px;
+      margin-bottom:18px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.07);
+    ">
 
-      ${c.logo ? `
-        <img
-          src="${escapeHTML(c.logo)}"
-          alt="${escapeHTML(c.name || "Contractor")} logo"
-          loading="lazy"
-          style="width:100%;max-width:140px;height:110px;object-fit:contain;border-radius:10px;margin-bottom:12px;"
-        >
-      ` : ""}
+      <div style="
+        display:flex;
+        align-items:center;
+        gap:16px;
+        margin-bottom:18px;
+      ">
 
-      <h3>${escapeHTML(c.name || "Local Contractor")}</h3>
+        ${c.logo ? `
+          <img
+            src="${escapeHTML(c.logo)}"
+            alt="${escapeHTML(c.name || "Contractor")} logo"
+            loading="lazy"
+            style="
+              width:105px;
+              height:105px;
+              object-fit:contain;
+              border-radius:12px;
+              border:1px solid #eee;
+              background:#fff;
+              padding:5px;
+              flex-shrink:0;
+            "
+          >
+        ` : ""}
 
-      <p>
-        <strong>Services:</strong><br>
-        ${(c.services || []).map(service =>
-          `<span style="display:inline-block;background:#e5f3ed;color:#176b52;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;margin:4px 5px 4px 0;">${escapeHTML(service)}</span>`
-        ).join("")}
+        <div>
+          <h3 style="
+            margin:0;
+            font-size:21px;
+            color:#173b32;
+            font-weight:800;
+          ">${escapeHTML(c.name || "Local Contractor")}</h3>
+
+          <p style="margin:6px 0 0;color:#64748b;font-size:13px;">
+            Local Home Service Professional
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <strong style="color:#334155;">Services offered</strong>
+        <div style="margin-top:7px;">
+          ${(c.services || []).map(service => `
+            <span style="
+              display:inline-block;
+              background:#e5f3ed;
+              color:#176b52;
+              padding:7px 12px;
+              border-radius:20px;
+              font-size:13px;
+              font-weight:600;
+              margin:3px 4px 3px 0;
+            ">${escapeHTML(service)}</span>
+          `).join("")}
+        </div>
+      </div>
+
+      <p style="margin:8px 0;color:#475569;">
+        <strong>ZIP Code:</strong> ${escapeHTML(c.zip || "Not provided")}
       </p>
 
-      <p><strong>ZIP Code:</strong> ${escapeHTML(c.zip || "Not provided")}</p>
+      <p style="margin:8px 0;color:#475569;">
+        <strong>Service Area:</strong> ${escapeHTML(c.radius || "Not provided")}
+      </p>
 
-      <p><strong>Service Area:</strong> ${escapeHTML(c.radius || "Not provided")}</p>
+      ${c.description ? `
+        <p style="margin:12px 0;color:#475569;line-height:1.5;">
+          ${escapeHTML(c.description)}
+        </p>
+      ` : ""}
 
-      <p>${escapeHTML(c.description || "")}</p>
+      <div style="
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+        margin-top:18px;
+      ">
+        ${c.phone ? `
+          <a href="tel:${encodeURIComponent(c.phone)}" style="
+            background:#176b52;
+            color:white;
+            padding:11px 17px;
+            border-radius:9px;
+            text-decoration:none;
+            font-weight:700;
+          ">📞 Call Contractor</a>
+        ` : ""}
 
-      ${c.phone ? `<p><a href="tel:${encodeURIComponent(c.phone)}">📞 Call Contractor</a></p>` : ""}
-
-      ${c.website ? `<p><a href="${safeWebsite(c.website)}" target="_blank" rel="noopener">🌐 Visit Website</a></p>` : ""}
+        ${c.website ? `
+          <a href="${safeWebsite(c.website)}" target="_blank" rel="noopener" style="
+            background:#edf3f1;
+            color:#176b52;
+            padding:11px 17px;
+            border-radius:9px;
+            text-decoration:none;
+            font-weight:700;
+          ">🌐 Website</a>
+        ` : ""}
+      </div>
 
     </div>
   `).join("");
