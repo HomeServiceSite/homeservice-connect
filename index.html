@@ -238,6 +238,11 @@ loadContractors();
 <div class="field full"><label for="ccats">Services offered *</label><select id="ccats" name="services" multiple required size="6"><option>Handyman</option><option>Plumbing</option><option>Electrical</option><option>HVAC</option><option>Roofing</option><option>Landscaping</option><option>Cleaning</option><option>Painting</option><option>Flooring</option><option>Remodeling</option><option>Pest control</option><option>Moving</option><option>Appliance repair</option><option>Other</option></select><span class="hint">On a computer, use Ctrl (Windows) or Command (Mac) to select multiple.</span></div>
 <div class="field full"><label for="clicense">License / registration details (if applicable)</label><input id="clicense" name="license" maxlength="120" placeholder="Type, number or N/A"></div>
 <div class="field full"><label for="cwebsite">Website (optional)</label><input id="cwebsite" name="website" type="url" placeholder="https://"></div>
+  <div class="field full">
+  <label for="clogo">Business logo or profile photo (optional)</label>
+  <input id="clogo" name="logoFile" type="file" accept="image/png,image/jpeg,image/webp">
+  <span class="hint">Upload a JPG, PNG, or WebP image.</span>
+</div>
 <div class="field full"><label for="cnotes">Tell us about your business</label><textarea id="cnotes" name="notes" maxlength="1500" placeholder="Years in business, specialties, availability, etc."></textarea></div>
 <div class="field full"><label class="checkbox"><input type="checkbox" name="cconsent" required><span>I confirm that I am authorized to submit this application and consent to being contacted about provider onboarding. *</span></label></div>
 <div class="field full"><button class="btn" type="submit">Apply to join →</button><div class="formmsg" id="contractorMsg" role="status"></div></div>
