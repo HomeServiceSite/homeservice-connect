@@ -196,24 +196,61 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    onAuthStateChanged(auth, function(user) {
-      if (!user) {
-        window.location.href = "contractor-login.html";
-        return;
+    
+onAuthStateChanged(auth, async function(user) {
+  const statusBox = document.getElementById("approvalStatus");
+
+  if (!user) {
+    window.location.href = "contractor-login.html";
+    return;
+  }
+
+  document.getElementById("accountEmail").textContent =
+    user.email || "Signed-in account";
+
+  statusBox.textContent = "Verifying contractor approval...";
+  statusBox.style.borderLeftColor = "#d69e36";
+
+  try {
+    const idToken = await user.getIdToken();
+
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbzX9x6whvmRxKSnSMi0oeWd9VQKyFd8TcYgRyrl8hFjuIZm5-_Gfhuo0kf-9Mk2EJin-w/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+          type: "contractorAuth",
+          idToken: idToken
+        })
       }
+    );
 
-      document.getElementById("accountEmail").textContent =
-        user.email || "Signed-in account";
+    const result = await response.json();
 
-      document.getElementById("approvalStatus").textContent =
-        "You are signed in. Your contractor approval has not yet been verified. Dashboard information will remain unavailable until verification is connected.";
-    });
+    if (!result.ok || !result.approved) {
+      statusBox.textContent =
+        "Your contractor account is not approved for dashboard access. Please contact HomeService Connect.";
+      statusBox.style.borderLeftColor = "#b42318";
+      await signOut(auth);
+      return;
+    }
 
-    document.getElementById("signOutButton")
-      .addEventListener("click", async function() {
-        await signOut(auth);
-        window.location.href = "contractor-login.html";
-      });
+    statusBox.textContent =
+      "Welcome, " + result.contractor.businessName +
+      "! Your contractor account is approved.";
+    statusBox.style.borderLeftColor = "#176b52";
+
+  } catch (error) {
+    console.error(error);
+    statusBox.textContent =
+      "We couldn't verify your approval. Please try again later.";
+    statusBox.style.borderLeftColor = "#b42318";
+  }
+});
+
   </script>
 
 </body>
