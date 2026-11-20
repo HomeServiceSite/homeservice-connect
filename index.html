@@ -415,4 +415,25 @@ form.reset();
 document.getElementById("quoteForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"quote","quoteMsg")});
 document.getElementById("contractorForm").addEventListener("submit",e=>{e.preventDefault();submitForm(e.currentTarget,"contractor","contractorMsg")});
 </script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+
+  import { getAuth } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAn651x7PTCejhc4d2m3yspRp-rT3uqHr8",
+    authDomain: "homeservice-connect-dashboard.firebaseapp.com",
+    projectId: "homeservice-connect-dashboard",
+    storageBucket: "homeservice-connect-dashboard.firebasestorage.app",
+    messagingSenderId: "522603441459",
+    appId: "1:522603441459:web:067706575879291172e246"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  console.log("HomeService Connect authentication initialized.");
+</script>
+
 </body></html>
