@@ -202,7 +202,7 @@ onAuthStateChanged(auth, async function(user) {
 
   if (!user) {
   statusBox.textContent =
-    "TEST: Firebase is not detecting a signed-in account.";
+    "No active Firebase session detected. Please sign in again.";
   return;
 }
 
