@@ -179,10 +179,13 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
 
     import {
-      getAuth,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+      import {
+  getAuth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  setPersistence,
+  browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAn651x7PTCejhc4d2m3yspRp-rT3uqHr8",
