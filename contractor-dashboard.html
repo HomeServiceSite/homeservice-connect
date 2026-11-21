@@ -197,7 +197,10 @@
 const auth = getAuth(app);
 
 await auth.authStateReady();
+
 console.log("Firebase dashboard initialized");
+console.log("Current Firebase user:", auth.currentUser);
+console.log("Current Firebase email:", auth.currentUser?.email || "NONE");
     
 onAuthStateChanged(auth, async function(user) {
   const statusBox = document.getElementById("approvalStatus");
