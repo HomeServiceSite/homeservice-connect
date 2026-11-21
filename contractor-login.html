@@ -157,7 +157,8 @@ await setPersistence(auth, browserLocalPersistence);
 await signInWithEmailAndPassword(auth, email, password);
         localStorage.setItem("hsc_session_test", auth.currentUser.email);
         message.textContent = "Login successful! Opening your dashboard...";
-
+console.log("LOGIN STORAGE TEST:", localStorage.getItem("hsc_session_test"));
+await new Promise(resolve => setTimeout(resolve, 5000));
 window.location.href = "contractor-dashboard.html";
 
       } catch(error) {
