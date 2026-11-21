@@ -204,6 +204,7 @@ console.log("Current Firebase email:", auth.currentUser?.email || "NONE");
 console.log("Browser storage test:", localStorage.getItem("hsc_session_test"));
     
 onAuthStateChanged(auth, async function(user) {
+  console.log("AUTH LISTENER USER:", user);
   const statusBox = document.getElementById("approvalStatus");
 
   if (!user) {
