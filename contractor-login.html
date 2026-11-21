@@ -153,7 +153,8 @@
 await setPersistence(auth, browserLocalPersistence);
 await signInWithEmailAndPassword(auth, email, password);
         message.textContent =
-          "Sign-in successful. Contractor approval verification is the next setup step. Your dashboard is not available yet.";
+  "Login successful. Firebase account: " +
+  (auth.currentUser ? auth.currentUser.email : "NOT DETECTED");
 
       } catch(error) {
         message.textContent =
