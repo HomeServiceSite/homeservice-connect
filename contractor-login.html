@@ -154,6 +154,8 @@ await auth.authStateReady();
 
       try {
 await signInWithEmailAndPassword(auth, email, password);
+console.log("LOGIN FIREBASE USER:", auth.currentUser);
+console.log("LOGIN FIREBASE KEYS:", Object.keys(localStorage).filter(key => key.includes("firebase")));       
         localStorage.setItem("hsc_session_test", auth.currentUser.email);
         message.textContent = "Login successful! Opening your dashboard...";
 console.log("LOGIN STORAGE TEST:", localStorage.getItem("hsc_session_test"));
