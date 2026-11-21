@@ -178,12 +178,13 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
 
-   import {
+import {
   getAuth,
   onAuthStateChanged,
-  signOut
+  signOut,
+  setPersistence,
+  browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
-
     const firebaseConfig = {
       apiKey: "AIzaSyAn651x7PTCejhc4d2m3yspRp-rT3uqHr8",
       authDomain: "homeservice-connect-dashboard.firebaseapp.com",
