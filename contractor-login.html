@@ -152,9 +152,9 @@
       try {
 await setPersistence(auth, browserLocalPersistence);
 await signInWithEmailAndPassword(auth, email, password);
-        message.textContent =
-  "Login successful. Firebase account: " +
-  (auth.currentUser ? auth.currentUser.email : "NOT DETECTED");
+        message.textContent = "Login successful! Opening your dashboard...";
+
+window.location.href = "contractor-dashboard.html";
 
       } catch(error) {
         message.textContent =
