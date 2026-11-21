@@ -198,7 +198,9 @@ import {
 const auth = getAuth(app);
 
 await auth.authStateReady();
-
+setTimeout(() => {
+  console.log("FIREBASE USER AFTER 3 SECONDS:", auth.currentUser);
+}, 3000);
 console.log("Firebase dashboard initialized");
 console.log("Current Firebase user:", auth.currentUser);
 console.log("Current Firebase email:", auth.currentUser?.email || "NONE");
