@@ -194,7 +194,9 @@
     };
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+const auth = getAuth(app);
+
+await auth.authStateReady();
 console.log("Firebase dashboard initialized");
     
 onAuthStateChanged(auth, async function(user) {
