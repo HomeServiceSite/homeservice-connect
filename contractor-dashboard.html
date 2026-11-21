@@ -197,7 +197,6 @@ import {
     const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-await setPersistence(auth, browserLocalPersistence);
 await auth.authStateReady();
 
 console.log("Firebase dashboard initialized");
