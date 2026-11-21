@@ -153,7 +153,6 @@ await auth.authStateReady();
       message.style.color = "#176b52";
 
       try {
-await setPersistence(auth, browserLocalPersistence);
 await signInWithEmailAndPassword(auth, email, password);
         localStorage.setItem("hsc_session_test", auth.currentUser.email);
         message.textContent = "Login successful! Opening your dashboard...";
