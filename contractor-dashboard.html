@@ -241,10 +241,12 @@ onAuthStateChanged(auth, async function(user) {
 
     const result = await response.json();
 
-    if statusBox.textContent =
-  "Approval check: " + JSON.stringify(result);
-statusBox.style.borderLeftColor = "#b42318";
-return; {
+  if (!result.ok || !result.approved) {
+  statusBox.textContent =
+    "Approval check: " + JSON.stringify(result);
+  statusBox.style.borderLeftColor = "#b42318";
+  return;
+}
       statusBox.textContent =
         "Your contractor account is not approved for dashboard access. Please contact HomeService Connect.";
       statusBox.style.borderLeftColor = "#b42318";
