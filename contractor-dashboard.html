@@ -222,7 +222,7 @@ onAuthStateChanged(auth, async function(user) {
   statusBox.textContent = "Verifying contractor approval...";
   statusBox.style.borderLeftColor = "#d69e36";
 
-  try {
+   try {
     const idToken = await user.getIdToken();
 
     const response = await fetch(
@@ -241,14 +241,9 @@ onAuthStateChanged(auth, async function(user) {
 
     const result = await response.json();
 
-  if (!result.ok || !result.approved) {
-  statusBox.textContent =
-    "Approval check: " + JSON.stringify(result);
-  statusBox.style.borderLeftColor = "#b42318";
-  return;
-}
+    if (!result.ok || !result.approved) {
       statusBox.textContent =
-        "Your contractor account is not approved for dashboard access. Please contact HomeService Connect.";
+        "Approval check: " + JSON.stringify(result);
       statusBox.style.borderLeftColor = "#b42318";
       return;
     }
@@ -259,6 +254,11 @@ onAuthStateChanged(auth, async function(user) {
     statusBox.style.borderLeftColor = "#176b52";
 
   } catch (error) {
+    console.error(error);
+    statusBox.textContent =
+      "We couldn't verify your approval. Please try again later.";
+    statusBox.style.borderLeftColor = "#b42318";
+  }
     console.error(error);
     statusBox.textContent =
       "We couldn't verify your approval. Please try again later.";
