@@ -1,0 +1,447 @@
+
+/* =====================================================
+   WHITE MOUNTAIN HOME SERVICES
+   HOMESERVICE CONNECT - PREMIUM DESIGN SYSTEM
+   Phase 1 - Step 1
+===================================================== */
+
+:root {
+  /* Brand colors */
+  --hsc-green: #123f35;
+  --hsc-green-dark: #0b2c25;
+  --hsc-green-light: #1e6b56;
+  --hsc-lime: #c9e8a6;
+
+  /* Backgrounds */
+  --hsc-white: #ffffff;
+  --hsc-background: #f6f8f6;
+  --hsc-surface: #edf3ef;
+
+  /* Text */
+  --hsc-text: #172521;
+  --hsc-muted: #64746d;
+  --hsc-light-text: #dce9e1;
+
+  /* Borders and shadows */
+  --hsc-border: #e1e9e3;
+  --hsc-shadow:
+    0 8px 30px rgba(18, 63, 53, 0.07);
+
+  --hsc-shadow-hover:
+    0 16px 38px rgba(18, 63, 53, 0.13);
+
+  /* Shape */
+  --hsc-radius-small: 8px;
+  --hsc-radius: 14px;
+  --hsc-radius-large: 22px;
+
+  /* Layout */
+  --hsc-container: 1200px;
+  --hsc-transition: 0.25s ease;
+}
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  background: var(--hsc-background);
+  color: var(--hsc-text);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* SHARED LAYOUT */
+
+.hsc-container {
+  width: min(
+    var(--hsc-container),
+    calc(100% - 40px)
+  );
+  margin-inline: auto;
+}
+
+.hsc-section {
+  padding: 76px 0;
+}
+
+.hsc-section-light {
+  background: var(--hsc-white);
+}
+
+.hsc-section-heading {
+  max-width: 720px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.hsc-eyebrow {
+  color: var(--hsc-green-light);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hsc-heading {
+  color: var(--hsc-green);
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  margin: 12px 0;
+}
+
+.hsc-description {
+  color: var(--hsc-muted);
+  font-size: 16px;
+  max-width: 650px;
+  margin-inline: auto;
+}
+
+/* BUTTONS */
+
+.hsc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 48px;
+  padding: 12px 23px;
+
+  border: 1px solid transparent;
+  border-radius: 11px;
+
+  background: var(--hsc-green);
+  color: var(--hsc-white);
+
+  font-weight: 750;
+  font-size: 14px;
+
+  transition:
+    background var(--hsc-transition),
+    transform var(--hsc-transition),
+    box-shadow var(--hsc-transition);
+}
+
+.hsc-button:hover {
+  background: var(--hsc-green-light);
+  transform: translateY(-2px);
+  box-shadow: var(--hsc-shadow);
+}
+
+.hsc-button-outline {
+  background: transparent;
+  border-color: var(--hsc-green);
+  color: var(--hsc-green);
+}
+
+.hsc-button-outline:hover {
+  background: var(--hsc-green);
+  color: var(--hsc-white);
+}
+
+.hsc-button-light {
+  background: var(--hsc-white);
+  color: var(--hsc-green);
+}
+
+.hsc-button-light:hover {
+  background: var(--hsc-surface);
+  color: var(--hsc-green-dark);
+}
+
+/* CARDS */
+
+.hsc-card {
+  background: var(--hsc-white);
+  border: 1px solid var(--hsc-border);
+  border-radius: var(--hsc-radius);
+  padding: 24px;
+  box-shadow: var(--hsc-shadow);
+
+  transition:
+    transform var(--hsc-transition),
+    box-shadow var(--hsc-transition);
+}
+
+.hsc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hsc-shadow-hover);
+}
+
+/* GRID */
+
+.hsc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.hsc-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hsc-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* FORM ELEMENTS */
+
+.hsc-form-group {
+  margin-bottom: 18px;
+}
+
+.hsc-label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--hsc-text);
+}
+
+.hsc-input,
+.hsc-select,
+.hsc-textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+
+  background: var(--hsc-white);
+  color: var(--hsc-text);
+
+  border: 1px solid var(--hsc-border);
+  border-radius: var(--hsc-radius-small);
+
+  outline: none;
+  transition: border var(--hsc-transition);
+}
+
+.hsc-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.hsc-input:focus,
+.hsc-select:focus,
+.hsc-textarea:focus {
+  border-color: var(--hsc-green-light);
+  box-shadow: 0 0 0 3px rgba(30, 107, 86, 0.1);
+}
+
+/* BRAND ELEMENTS */
+
+.hsc-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--hsc-green);
+  font-weight: 850;
+  letter-spacing: -0.4px;
+}
+
+.hsc-brand-mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+
+  background: var(--hsc-green);
+  color: var(--hsc-white);
+
+  border-radius: 12px;
+  font-size: 23px;
+}
+
+.hsc-brand small {
+  display: block;
+  color: var(--hsc-muted);
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  font-weight: 750;
+}
+
+/* PREMIUM HERO */
+
+.hsc-hero {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      #2c715c 0,
+      #174b3e 38%,
+      #10372f 78%
+    );
+
+  color: var(--hsc-white);
+  padding: 90px 0;
+}
+
+.hsc-hero h1 {
+  max-width: 850px;
+  margin: 0 auto 20px;
+
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.hsc-hero p {
+  max-width: 650px;
+  margin: 0 auto;
+
+  color: var(--hsc-light-text);
+  font-size: 17px;
+}
+
+/* BADGES */
+
+.hsc-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+
+  border-radius: 30px;
+  background: var(--hsc-surface);
+  color: var(--hsc-green);
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* FOOTER */
+
+.hsc-footer {
+  background: var(--hsc-green-dark);
+  color: var(--hsc-light-text);
+  padding: 55px 0 25px;
+}
+
+.hsc-footer a {
+  color: var(--hsc-light-text);
+}
+
+.hsc-footer a:hover {
+  color: var(--hsc-lime);
+}
+
+.hsc-footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin-top: 35px;
+  padding-top: 20px;
+  font-size: 12px;
+  color: #a9c1b5;
+}
+
+/* ACCESSIBILITY */
+
+.hsc-button:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--hsc-lime);
+  outline-offset: 3px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+  .hsc-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hsc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hsc-section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hsc-container {
+    width: min(
+      var(--hsc-container),
+      calc(100% - 30px)
+    );
+  }
+
+  .hsc-grid,
+  .hsc-grid-2,
+  .hsc-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .hsc-section {
+    padding: 48px 0;
+  }
+
+  .hsc-hero {
+    padding: 65px 0;
+  }
+
+  .hsc-hero h1 {
+    letter-spacing: -1.3px;
+  }
+
+  .hsc-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
