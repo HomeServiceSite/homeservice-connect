@@ -75,7 +75,26 @@ h2{font-size:clamp(30px,4vw,43px);letter-spacing:-1.5px;line-height:1.12;margin:
 .contractor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .contractor-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 5px 18px rgba(0,0,0,.045);transition:transform .2s,box-shadow .2s}
 .contractor-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.contractor-card h3{margin:0 0 8px;color:var(--green);font-size:20px}
+.contractor-logo {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: #f5f8f5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.contractor-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+  .contractor-card h3{margin:0 0 8px;color:var(--green);font-size:20px}
 .contractor-card p{color:#52645c;line-height:1.6;margin:8px 0;font-size:13px}
 .contractor-card a{display:inline-block;background:var(--green);color:#fff;padding:10px 15px;border-radius:9px;font-weight:750;font-size:13px;margin:5px 5px 0 0}
 .contractor-card a:hover{background:var(--green-2)}
