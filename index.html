@@ -694,15 +694,32 @@ function renderContractors(listings) {
     const phone = String(contractor.phone || "").replace(/[^\d+]/g, "");
     const website = String(contractor.website || "").trim();
     const safeWebsite = /^https?:\/\//i.test(website) ? website : "";
+    const logo = String(contractor.logo || "").trim();
 
     return `
       <article class="contractor-card">
+
+        ${logo ? `
+          <div class="contractor-logo">
+            <img src="${escapeHtml(logo)}"
+                 alt="${name} logo"
+                 loading="lazy"
+                 onerror="this.parentElement.style.display='none'">
+          </div>
+        ` : ""}
+
         <h3>${name}</h3>
+
         <p>${description}</p>
+
         <p><strong>Services:</strong> ${services}</p>
+
         ${contractor.zip ? `<p><strong>ZIP:</strong> ${escapeHtml(contractor.zip)}</p>` : ""}
+
         ${phone ? `<a href="tel:${escapeHtml(phone)}">Call business</a>` : ""}
+
         ${safeWebsite ? `<a href="${escapeHtml(safeWebsite)}" target="_blank" rel="noopener noreferrer">Website</a>` : ""}
+
       </article>
     `;
   }).join("");
